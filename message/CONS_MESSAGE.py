@@ -1,0 +1,33 @@
+TEAM_INVITE = '{actor} 邀请您加入 {team} (属于 {course})。'
+TEAM_APPLY = '{actor} 申请加入 {team} (属于 {course})。'
+
+COURSE_INVITE_TCH = '{actor}老师邀请您加入{course}的教师团队'
+COURSE_INVITE_TCH_FORCE = '{actor}老师已将您加入{course}的教师团队'
+
+COURSE_INVITE_STU = '{actor}老师邀请您成为{course}的课代表'
+COURSE_INVITE_STU_FORCE = '{actor}老师已将您设置为{course}的课代表'
+
+
+MESSAGE_TYPE_INVITE = 0x01
+MESSAGE_TYPE_APPLY = 0x02
+MESSAGE_TYPE_MAIL = 0x04
+
+MESSAGE_TYPE_CHOICES = (
+    (MESSAGE_TYPE_INVITE, '邀请'),
+    (MESSAGE_TYPE_APPLY, '申请'),
+    (MESSAGE_TYPE_MAIL, '站内信'),
+)
+
+MESSAGE_STATUS_CREATING = 0x01
+MESSAGE_STATUS_SENT = 0x02
+MESSAGE_STATUS_READ = 0x04
+MESSAGE_STATUS_REJECTED = 0x08
+MESSAGE_STATUS_ACCEPTED = 0x10
+
+MESSAGE_STATUS_CHOICES = (
+    (MESSAGE_STATUS_CREATING, '草稿'),
+    (MESSAGE_STATUS_SENT, '已发送'),
+    (MESSAGE_STATUS_READ, '已读'),
+    (MESSAGE_STATUS_ACCEPTED, '被接受'),
+    (MESSAGE_STATUS_REJECTED, '被拒绝'),
+)

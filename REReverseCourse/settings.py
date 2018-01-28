@@ -25,7 +25,7 @@ SECRET_KEY = 'ylrh#uvcy0!sbb*+bsy!8wx=drzekjr$4jr))z(nmimbutc%*h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'REReverseCourse.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ReverseCourse',
+        'HOST': '127.0.0.1',
+        'USER': 'root',
+        'PASSWORD': 'deemo',
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 
