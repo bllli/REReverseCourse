@@ -7,7 +7,7 @@ DATABASES = {
         'NAME': 'ReverseCourse',
         'HOST': '127.0.0.1',
         'USER': 'root',
-        'PASSWORD': 'password',
+        'PASSWORD': 'Uf0atxqd74QVkBAe',
         'OPTIONS': {'charset': 'utf8mb4'},
     }
 }

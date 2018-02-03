@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.shortcuts import render
+from django.urls import include
+
+
+def index(request):
+    return render(request, 'index.html')
+
 
 urlpatterns = [
+    url(r'^accounts/', include('accounts.url', namespace='accounts')),
     url(r'^admin/', admin.site.urls),
+    url(r'^$', index, name='index'),
 ]
