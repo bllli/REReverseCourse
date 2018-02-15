@@ -45,7 +45,7 @@ class Course(models.Model):
 
     title = models.CharField(max_length=200, verbose_name='课程名称')
     content = models.TextField(null=True, blank=True, verbose_name='内容')
-    resources = models.ManyToManyField(Resource, verbose_name='资源')
+    resources = models.ManyToManyField(Resource, blank=True, verbose_name='资源')
     status = models.SmallIntegerField(choices=COURSE_STATUS_CHOICES, default=COURSE_CREATING, verbose_name='课程状态')
 
     start_time = models.DateTimeField(default=None, null=True, blank=True, verbose_name='课程开始时间')
@@ -55,7 +55,8 @@ class Course(models.Model):
 
     teacher = models.ForeignKey('accounts.Teacher', null=True, blank=True, verbose_name='负责教师',
                                 on_delete=models.SET_NULL, related_name='in_charge_course_set')
-    teaching_assistant = models.ManyToManyField('accounts.Teacher', verbose_name='助教', related_name='help_course_set')
+    teaching_assistant = models.ManyToManyField('accounts.Teacher', blank=True, verbose_name='助教',
+                                                related_name='help_course_set')
 
     def __str__(self):
         return '{}'.format(self.title)

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}课程列表{% endblock %}
+
+{% block container %}
+    <div class="ui text container" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+        {#标题#}
+        <div class="ui huge header">课程列表</div>
+        {% verbatim %}
+        <div id="app">
+            <div class="ui left aligned segment" v-for="c in courses">
+                <a v-bind:href="c.url">{{ c.title }}</a>
+                <div class="ui right">讲师：<a v-bind:href="c.url">{{ c.content }}</a></div>
+            </div>
+        </div>
+        {% endverbatim %}
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        axios.get('/course/').then(function (response) {
+            console.log(response)
+            let courses = response.data.result.data
+            let app = new Vue({
+                el: '#app',
+                data: {
+                    courses: courses
+                }
+            })
+        }).catch(function (error) {
+            console.log(error)
+        })
+
+
+    </script>
+{% endblock %}

@@ -8,6 +8,9 @@
     <title>{% block title %}你看这个页面没有title{% endblock %}</title>
     <link href="/static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css"/>
     <script src="/static/dist/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <style type="text/css">
         .site {
             display: flex;
@@ -25,8 +28,8 @@
 <body class="site">
 <div class="ui massive menu">
     <a class="active item" href="{% url 'index' %}">主页 </a>
-{#    <a class="item" href="{% url 'course:list' %}">课程 </a>#}
-{#    <a class="item" href="{% url 'groups' %}">团队 </a>#}
+    {#    <a class="item" href="{% url 'course:list' %}">课程 </a>#}
+    {#    <a class="item" href="{% url 'groups' %}">团队 </a>#}
     <div class="right menu">
         <div class="item">
             <div class="ui action input">
@@ -48,12 +51,12 @@
             </div>
         {% else %}
             <div class="item">
-{#                <a href="{% url 'inbox' %}">#}
-{#                    <div class="ui {% if notifications_unread %}red{% endif %} button">#}
-                        <i class="mail icon"></i>
-{#                        {% notifications_unread %}#}
-                    </div>
-                </a>
+                {#                <a href="{% url 'inbox' %}">#}
+                {#                    <div class="ui {% if notifications_unread %}red{% endif %} button">#}
+                <i class="mail icon"></i>
+                {#                        {% notifications_unread %}#}
+            </div>
+            </a>
             </div>
             <div class="ui dropdown item"> {{ request.user.username }} <i class="dropdown icon"></i>
                 <div class="menu">
@@ -64,18 +67,21 @@
                 </div>
             </div>
         {% endif %}
-    </div>
+</div>
 </div>
 <div class="site_container">
     {% if messages %}
-        <div class="ui text container"><div class="ui center list">
-            {% for message in messages %}
-                <div class="item">
-                    <div class="ui fluid message transition"><i class="close icon"></i><p>{{ message | safe }}</p></div>
-                </div>
-                {#            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
-            {% endfor %}
-        </div></div>
+        <div class="ui text container">
+            <div class="ui center list">
+                {% for message in messages %}
+                    <div class="item">
+                        <div class="ui fluid message transition"><i class="close icon"></i>
+                            <p>{{ message | safe }}</p></div>
+                    </div>
+                    {#            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+                {% endfor %}
+            </div>
+        </div>
         <div class="ui hidden divider"></div>
     {% endif %}
     {% block container %}
@@ -144,6 +150,5 @@
 
     $('#search_icon').click(Search);
 </script>
-{% block js %}
-{% endblock %}
+{% block js %}{% endblock %}
 </body>

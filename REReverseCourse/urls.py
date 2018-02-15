@@ -25,6 +25,7 @@ def index(request):
 
 urlpatterns = [
     url(r'^accounts/', include('accounts.url', namespace='accounts')),
+    url(r'^course/', include('course.url', namespace='course')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name='index'),
 ]
