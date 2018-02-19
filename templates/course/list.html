@@ -21,11 +21,11 @@
     <script type="text/javascript">
         axios.get('/course/').then(function (response) {
             console.log(response)
-            let courses = response.data.result.data
+            let courses_data = response.data.data;
             let app = new Vue({
                 el: '#app',
                 data: {
-                    courses: courses
+                    courses: courses_data
                 }
             })
         }).catch(function (error) {
