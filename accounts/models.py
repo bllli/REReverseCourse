@@ -13,7 +13,7 @@ class SchoolClass(models.Model):
                                      verbose_name='班主任')
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return 'SchoolClass {}_{}_{}'.format(self.id, self.name, self.head_teacher)
 
     class Meta:
         ordering = ('create_date',)
@@ -29,6 +29,9 @@ class Teacher(models.Model):
     tch_id = models.CharField(max_length=200, null=True, blank=True, verbose_name='教工号')
     banned = models.BooleanField(default=False, verbose_name='是否停用')
 
+    def __str__(self):
+        return '<Tch {}_{}>'.format(self.tch_id, self.name)
+
     class Meta:
         ordering = ('create_date',)
         verbose_name = '教师信息'
@@ -43,7 +46,10 @@ class Student(models.Model):
     stu_id = models.CharField(max_length=200, null=True, blank=True, verbose_name='学号')
     banned = models.BooleanField(default=False, verbose_name='是否停用')
 
-    school_classes = models.ManyToManyField(SchoolClass)
+    school_classes = models.ManyToManyField(SchoolClass, blank=True)
+
+    def __str__(self):
+        return '<Stu {}_{}>'.format(self.stu_id, self.name)
 
     class Meta:
         ordering = ('create_date',)

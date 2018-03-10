@@ -1,8 +1,11 @@
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from rest_framework import viewsets
 
 from .forms import LoginForm
+from .models import SchoolClass, Teacher, Student
+from .serializers import SchoolClassSerializer, TeacherSerializer, StudentSerializer
 
 
 def login(request):
@@ -30,3 +33,27 @@ def logout(request):
     auth.logout(request)
     messages.success(request, '登出成功, Bye~')
     return redirect('index')
+
+
+class SchoolClassViewSet(viewsets.ModelViewSet):
+    serializer_class = SchoolClassSerializer
+    permission_classes = ()
+
+    def get_queryset(self):
+        return SchoolClass.objects.all()
+
+
+class TeacherViewSet(viewsets.ModelViewSet):
+    serializer_class = TeacherSerializer
+    permission_classes = ()
+
+    def get_queryset(self):
+        return Teacher.objects.all()
+
+
+class StudentViewSet(viewsets.ModelViewSet):
+    serializer_class = StudentSerializer
+    permission_classes = ()
+
+    def get_queryset(self):
+        return Student.objects.all()
