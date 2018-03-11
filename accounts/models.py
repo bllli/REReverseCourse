@@ -15,6 +15,10 @@ class SchoolClass(models.Model):
     def __str__(self):
         return 'SchoolClass {}_{}_{}'.format(self.id, self.name, self.head_teacher)
 
+    @property
+    def owner(self):
+        return self.head_teacher
+
     class Meta:
         ordering = ('create_date',)
         verbose_name = '班级信息'
@@ -31,6 +35,10 @@ class Teacher(models.Model):
 
     def __str__(self):
         return '<Tch {}_{}>'.format(self.tch_id, self.name)
+
+    @property
+    def owner(self):
+        return self.user
 
     class Meta:
         ordering = ('create_date',)
@@ -50,6 +58,10 @@ class Student(models.Model):
 
     def __str__(self):
         return '<Stu {}_{}>'.format(self.stu_id, self.name)
+
+    @property
+    def owner(self):
+        return self.user
 
     class Meta:
         ordering = ('create_date',)

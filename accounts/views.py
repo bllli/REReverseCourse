@@ -5,7 +5,8 @@ from rest_framework import viewsets
 
 from .forms import LoginForm
 from .models import SchoolClass, Teacher, Student
-from .serializers import SchoolClassSerializer, TeacherSerializer, StudentSerializer
+from .serializers import (SchoolClassSerializer, TeacherSerializer, StudentSerializer)
+from .permissions import (IsOwnerOrReadOnly, IsTeacherOrCannotCreate)
 
 
 def login(request):
@@ -37,7 +38,7 @@ def logout(request):
 
 class SchoolClassViewSet(viewsets.ModelViewSet):
     serializer_class = SchoolClassSerializer
-    permission_classes = ()
+    permission_classes = (IsOwnerOrReadOnly, IsTeacherOrCannotCreate)
 
     def get_queryset(self):
         return SchoolClass.objects.all()
@@ -45,7 +46,7 @@ class SchoolClassViewSet(viewsets.ModelViewSet):
 
 class TeacherViewSet(viewsets.ModelViewSet):
     serializer_class = TeacherSerializer
-    permission_classes = ()
+    permission_classes = (IsOwnerOrReadOnly,)
 
     def get_queryset(self):
         return Teacher.objects.all()
@@ -53,7 +54,7 @@ class TeacherViewSet(viewsets.ModelViewSet):
 
 class StudentViewSet(viewsets.ModelViewSet):
     serializer_class = StudentSerializer
-    permission_classes = ()
+    permission_classes = (IsOwnerOrReadOnly,)
 
     def get_queryset(self):
         return Student.objects.all()
