@@ -18,5 +18,5 @@ class IsTeacherOrCannotCreate(permissions.BasePermission):
 
     def has_permission(self, request, view):
         if request.method == 'POST':
-            return Teacher.objects.filter(user=request.user).exists() or request.user.is_superuser
+            return Teacher.objects.filter(user_id=request.user.id).exists() or request.user.is_superuser
         return True

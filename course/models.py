@@ -15,7 +15,7 @@ class Resource(models.Model):
     """
     create_date = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=300, null=True, blank=True, verbose_name='资源名称')
-    url = models.URLField(verbose_name='url')
+    url = models.URLField(verbose_name='url', null=True, blank=True)
     text = models.TextField(null=True, blank=True, verbose_name='文本')
     type = models.SmallIntegerField(choices=RESOURCE_TYPE_CHOICES, verbose_name='资源类型')
 
