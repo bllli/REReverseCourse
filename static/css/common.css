@@ -1,0 +1,77 @@
+/* 头部公共样式 */
+.header {
+    height: 50px;
+    background: #fff;
+    box-shadow: 0 1px 1px #aaa8a8;
+}
+
+.header .home {
+    float: left;
+    height: 50px;
+    margin-right: 50px;
+}
+
+.header .home h1 {
+    height: 100%;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.header .nav {
+    float: left;
+    height: 50px;
+}
+
+.header .nav li {
+    float: left;
+    width: 100px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.header .search {
+    float: left;
+    margin-top: 12px;
+    width: 230px;
+    border: 1px solid #b6b6b6;
+    border-radius: 30px;
+    padding: 5px 0 5px 10px;
+    
+}
+
+.header .search .icon {
+    float: left;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.header .search input {
+    float: left;
+    line-height: 100%;
+}
+
+.header .user {
+    float: right;
+    height: 50px;
+    line-height: 50px;
+}
+
+.header .user button {
+    float: left;
+    margin-top: 12px;
+    padding: 4px 20px;
+    border: 1px solid #b6b6b6;
+    cursor: pointer;
+}
+
+.header .user .login {
+    margin-right: 10px;
+}
+
+/* 底部公共样式 */
+.footer {
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+    border-top: 1px solid #b6b6b6;
+}

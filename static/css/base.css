@@ -1,0 +1,50 @@
+/* 公共样式 */
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6 {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+body {
+    font-size: 14px;
+    background-color: #F7F7FA;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+img,input,button {
+    vertical-align: middle;
+    outline-style: none;
+    border: 0 none;
+    background: none;
+    padding: 0;
+}
+/* 清除浮动 */
+.clearfix::after {
+    content: '';
+    height: 0;
+    width: 0;
+    line-height: 0;
+    clear: both;
+    display: block;
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+}
+/* 版心 */
+.w {
+    margin: 0 auto;
+    width: 1200px;
+}
+/* 设置字体图标 */
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }

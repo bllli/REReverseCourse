@@ -1,0 +1,77 @@
+.content {
+    height: 1000px;
+}
+
+.login_box {
+    position: relative;
+    width: 324px;
+    height: 240px;
+    margin: 200px auto 0;
+    background: #ffffff;
+    box-shadow: 1px 1px 1px #b6b6b6, -1px 1px 1px #b6b6b6;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.login_box .line {
+    height: 3px;
+    margin: 30px auto;
+    width: 240px;
+    background: #999999;
+}
+
+.login_box > p {
+    position: absolute;
+    width: 60px;
+    top: 16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+    font-size: 20px;
+    background: #ffffff;
+    color: #999999;
+}
+
+.login_box .login_box_main {
+    width: 300px;
+    margin: 0 auto;
+    /*border: 1px solid firebrick;*/
+}
+
+.login_box .input_box {
+    /*width: 290px;*/
+    /*height: 30px;*/
+    /*border: 1px solid wheat;*/
+    border: 1px solid #b6b6b6;
+    margin: 0 20px 10px;
+    background: rgba(35, 62, 85, 0.12);
+    border-radius: 4px;
+    padding: 4px 10px;
+}
+
+.login_box .login_btn {
+    display: block;
+    width: 260px;
+    height: 36px;
+    margin: 0 auto;
+    border-radius: 4px;
+    background: deepskyblue;
+    cursor: pointer;
+    color: white;
+}
+
+.login_box .can_register {
+    margin-top: 10px;
+    margin-left: 50%;
+}
+
+.login_box .can_register span {
+    font-size: 12px;
+}
+
+.login_box .can_register a {
+    font-size: 12px;
+}
+
+
