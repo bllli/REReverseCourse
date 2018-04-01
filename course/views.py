@@ -3,10 +3,12 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 
 from accounts.permissions import IsOwnerOrReadOnly, IsTeacherOrCannotCreate
+from team.models import Team
 
 from . import CONS_COURSE
-from .models import Course, Resource
-from .serializers import CourseSerializer, ResourceSerializer
+from .models import Course, Resource, CourseUpdate, TeamUpdate
+from .serializers import CourseSerializer, ResourceSerializer, CourseUpdateSerializer, TeamUpdateSerializer, \
+    TeamSerializer
 
 
 def course_list(request):
@@ -31,9 +33,7 @@ class ResourceViewSet(viewsets.ModelViewSet):
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     permission_classes = (IsOwnerOrReadOnly, IsTeacherOrCannotCreate)
-
-    def get_queryset(self):
-        return Course.objects.exclude(status=CONS_COURSE.COURSE_CREATING).all()
+    queryset = Course.objects.all()
 
     def list(self, request, *args, **kwargs):
         if request.GET.get('myself', None) and request.user.is_authenticated:
@@ -42,4 +42,35 @@ class CourseViewSet(viewsets.ModelViewSet):
         tch_id = request.GET.get('tch_id')
         if tch_id:
             self.queryset = Course.objects.filter(teacher__tch_id=tch_id).all()
+        self.queryset = Course.objects.exclude(status=CONS_COURSE.COURSE_CREATING).all()
+        return Response(self.serializer_class(self.queryset, many=True).data)
+
+
+class CourseUpdateViewSet(viewsets.ModelViewSet):
+    serializer_class = CourseUpdateSerializer
+
+    def get_queryset(self):
+        return CourseUpdate.objects.exclude(status=CONS_COURSE.COURSE_UPDATE_CREATING).all()
+
+    def list(self, request, *args, **kwargs):
+        return Response(self.serializer_class(self.queryset, many=True).data)
+
+
+class TeamUpdateViewSet(viewsets.ModelViewSet):
+    serializer_class = TeamUpdateSerializer
+
+    def get_queryset(self):
+        return TeamUpdate.objects.exclude(status=CONS_COURSE.COURSE_UPDATE_CREATING).all()
+
+    def list(self, request, *args, **kwargs):
+        return Response(self.serializer_class(self.queryset, many=True).data)
+
+
+class TeamViewSet(viewsets.ModelViewSet):
+    serializer_class = TeamSerializer
+
+    def get_queryset(self):
+        return Team.objects.all()
+
+    def list(self, request, *args, **kwargs):
         return Response(self.serializer_class(self.queryset, many=True).data)

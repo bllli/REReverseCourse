@@ -4,8 +4,9 @@ from rest_framework import serializers, status
 from rest_framework.exceptions import ValidationError
 
 from accounts.serializers import TeacherSerializer
+from team.models import Team
 
-from .models import Resource, Course
+from .models import Resource, Course, CourseUpdate, TeamUpdate
 
 
 class ResourceSerializer(serializers.ModelSerializer):
@@ -32,10 +33,28 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
-        exclude = ('id', 'create_date', 'update_date')
+        exclude = ('create_date', 'update_date')
 
 
 class CourseMiniSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         exclude = ('create_date', 'teaching_assistant', 'resources')
+
+
+class CourseUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseUpdate
+        exclude = ('create_date', 'update_date')
+
+
+class TeamUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeamUpdate
+        exclude = ('create_date', 'update_date')
+
+
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        exclude = ('create_date',)

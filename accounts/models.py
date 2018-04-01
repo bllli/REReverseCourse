@@ -47,7 +47,7 @@ class Teacher(models.Model):
 
 
 class Student(models.Model):
-    """学位Model"""
+    """学生Model"""
     create_date = models.DateTimeField(auto_now=True)
     user = models.OneToOneField(User, on_delete=models.SET(get_sentinel_user))
     name = models.CharField(max_length=200, null=True, blank=True, verbose_name='学生姓名')
